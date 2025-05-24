@@ -177,15 +177,18 @@ public:
 			player.Update();
 			op.Update(ball.y);
 
-			// Collision detection
+			// Collision detection for player
 			if (CheckCollisionCircleRec(Vector2{ ball.x, ball.y }, ball.radius, Rectangle{ player.x, player.y, player.width, player.height }))
 			{
-				ball.speedX *= -1;
+				// Force ball to go other way instead of blindly flipping direction back and forth
+				ball.speedX = abs(ball.speedX); // Force the ball right
+				ball.x = player.x + player.width + ball.radius; // Push ball to the right of the paddle. Formula is left edge of paddle + width of paddle + radius of ball
 			}
+			// Collision detection for opponent
 			if (CheckCollisionCircleRec(Vector2{ ball.x, ball.y }, ball.radius, Rectangle{ op.x, op.y, op.width, op.height }))
 			{
-				ball.speedX *= -1;
-
+				ball.speedX = -abs(ball.speedX); // Force the ball left
+				ball.x = op.x - ball.radius; // Snap ball to left of opponent panel
 			}
 
 			// Drawing
