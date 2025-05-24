@@ -86,7 +86,7 @@ public:
 
 	void Draw()
 	{
-		DrawRectangleRounded(Rectangle{ x, y, width, height }, 0.8, 20, WHITE);
+		DrawRectangle(x, y, width, height, WHITE);
 	}
 
 	void Update()
@@ -215,11 +215,6 @@ public:
 
 		CloseWindow();
 	}
-};
-
-class MainMenu
-{
-
 };
 
 int main()
