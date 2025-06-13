@@ -146,7 +146,7 @@ public:
 		Ball ball;
 		ball.x = screenWidth / 2;
 		ball.y = screenHeight / 2;
-        ball.radius = 15;
+		ball.radius = 15;
 		ball.speedX = 7;
 		ball.speedY = 7;
 
